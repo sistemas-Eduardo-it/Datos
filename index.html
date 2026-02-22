@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional de Eduardo, Ingeniero de Sistemas y Desarrollador Fullstack especializado en integración de ERPs.">
+    <title>Eduardo | Ingeniero de Sistemas & Desarrollador</title>
+    <style>
+        /* Variables CSS para un mantenimiento fácil */
+        :root {
+            --bg-main: #0f172a; /* Fondo principal oscuro */
+            --bg-secondary: #1e293b; /* Fondo para tarjetas y header */
+            --text-primary: #f8fafc; /* Texto principal claro */
+            --text-muted: #94a3b8; /* Texto secundario grisáceo */
+            --accent-color: #38bdf8; /* Un azul cián moderno para destacar */
+            --accent-hover: #0ea5e9; /* Color al pasar el mouse */
+            --border-color: #334155; /* Bordes sutiles */
+        }
+
+        /* Reset y estilos base */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header elegante con gradiente sutil */
+        header {
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-main));
+            padding: 6rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        h1 {
+            margin: 0;
+            font-size: 3rem;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        .header-intro {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Secciones y títulos */
+        section {
+            margin-bottom: 5rem;
+        }
+        h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        h2::after {
+            content: "";
+            flex: 1;
+            margin-left: 1rem;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+        p { color: var(--text-muted); }
+
+        /* Tarjetas de Proyectos Profesionales */
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-color);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        .project-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tags de tecnología modernos */
+        .tech-tags {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .tech-tags span {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1); /* Color acento con transparencia */
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Botones (para contacto y CV) */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-main);
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Icono pequeño para descarga */
+        .icon-download { margin-right: 8px; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Eduardo</h1>
+        <div class="subtitle">Ingeniero de Sistemas & Desarrollador Fullstack</div>
+        <p class="header-intro">Especialista en puentes tecnológicos: conecto infraestructura robusta y datos de ERPs con soluciones web modernas y eficientes.</p>
+        
+        <div class="btn-group" style="justify-content: center;">
+            <a href="#contacto" class="btn btn-primary">Contactar</a>
+            <a href="mi-cv-eduardo.pdf" download class="btn btn-outline">
+                <svg class="icon-download" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Descargar CV
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="sobre-mi">
+            <h2>Perfil Híbrido</h2>
+            <p>Más allá del desarrollo web tradicional, mi experiencia en administración de servidores, virtualización (VMWare) y redes (Cisco) me permite diseñar arquitecturas de software que son seguras y escalables desde la base. Entiendo el ciclo de vida completo del dato, desde el servidor físico hasta la interfaz del usuario.</p>
+            
+            <div class="tech-tags">
+                <span>Python (Backend)</span>
+                <span>SQL Avanzado</span>
+                <span>Integración ERP</span>
+                <span>JavaScript Moderno</span>
+                <span>Administración Linux/Ubuntu</span>
+                <span>Infraestructura IT</span>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Proyectos Destacados</h2>
+            
+            <div class="project-card">
+                <h3>Plataforma de Sincronización CAYVER</h3>
+                <p><span class="project-label">El Desafío de Negocio:</span> La empresa dependía de un ERP local robusto pero inaccesible externamente, generando silos de información y procesos manuales lentos.</p>
+                <p><span class="project-label">Solución de Ingeniería:</span> Desarrollé una arquitectura "middleware" que extrae datos seguramente mediante consultas SQL optimizadas. Los datos son procesados con Python/PHP y expuestos en una interfaz web dinámica, permitiendo acceso en tiempo real a inventarios y métricas sin comprometer la seguridad del servidor central.</p>
+                <div class="tech-tags">
+                    <span>Arquitectura de Datos</span>
+                    <span>SQL / MySQL</span>
+                    <span>Python Middleware</span>
+                    <span>Desarrollo Web Fullstack</span>
+                    <span>Seguridad IT</span>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="contacto">
+            <h2>Conectemos</h2>
+            <p>Estoy disponible para oportunidades donde pueda aplicar mi doble perfil en sistemas y desarrollo para resolver problemas complejos de integración.</p>
+            <div class="btn-group">
+                <a href="mailto:tu-correo@ejemplo.com" class="btn btn-primary">Enviar Correo Electrónico</a>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
