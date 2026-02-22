@@ -1,0 +1,140 @@
+:root {
+    --bg-base: #050508;
+    --bg-card: rgba(15, 15, 20, 0.6);
+    --neon-cyan: #00f0ff;
+    --neon-purple: #8a2be2;
+    --text-main: #e0e0e0;
+    --text-muted: #888;
+}
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Fondos y luces ambientales */
+.background-effects {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+}
+.glow {
+    position: absolute;
+    width: 40vw; height: 40vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+.glow-1 { top: -10%; left: -10%; background: var(--neon-cyan); }
+.glow-2 { bottom: -10%; right: -10%; background: var(--neon-purple); animation-delay: -5s; }
+
+@keyframes drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(10vw, 10vh); }
+}
+
+/* Navegación */
+.cyber-nav {
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 15px 0;
+    z-index: 100;
+}
+.nav-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.logo { font-weight: 700; color: var(--neon-cyan); letter-spacing: 2px; }
+
+/* Botón Neón */
+.btn-neon {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 4px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+.btn-neon:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* Hero Section */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.tech-badge {
+    display: inline-block;
+    background: rgba(138, 43, 226, 0.1);
+    color: var(--neon-purple);
+    border: 1px solid var(--neon-purple);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+.neon-text {
+    font-size: 5rem;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    letter-spacing: 5px;
+}
+.typewriter-container { font-size: 1.5rem; color: var(--neon-cyan); margin-top: 10px; }
+.cursor { animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Grid Bento (Tarjetas) */
+.container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+.section-title { color: #fff; border-bottom: 1px solid var(--neon-purple); padding-bottom: 10px; margin-bottom: 30px; }
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+}
+.bento-card:hover::before { left: 150%; }
+.bento-card:hover { transform: translateY(-5px); border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1); }
+
+.card-icon { font-size: 2.5rem; color: var(--neon-cyan); margin-bottom: 15px; display: flex; gap: 10px; }
+.card-creative .card-icon { color: var(--neon-purple); }
+
+/* Tags */
+.tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+.tag { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; background: rgba(255,255,255,0.1); }
