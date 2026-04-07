@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Eduardo Ramírez Rivas | Full Stack & Arquitectura TI</title>
+    <title>Luis Eduardo Ramírez Rivas | IT Systems Architect & Dev</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,10 +18,10 @@
 
     <nav class="cyber-nav">
         <div class="nav-content">
-            <span class="logo">LER // SYS.ARCHITECT</span>
+            <span class="logo">LUIS E. RAMÍREZ // IT.SYS</span>
             <div class="nav-links">
-                <a href="#demos">Dashboards</a>
-                <a href="Eduardo Ramirez CV.pdf" download class="btn-neon">Descargar CV <i class="fas fa-file-download"></i></a>
+                <a href="#proyectos">Proyectos Cayver</a>
+                <a href="Eduardo Ramirez CV.pdf" download class="btn-primary">Descargar CV <i class="fas fa-file-download"></i></a>
             </div>
         </div>
     </nav>
@@ -29,110 +29,110 @@
     <header class="hero">
         <div class="hero-content">
             <div class="tech-badge"><i class="fas fa-terminal"></i> Head of Systems @ Sitmobel</div>
-            <h1 class="neon-text-title">LUIS EDUARDO RAMÍREZ RIVAS</h1>
-            <p class="hero-desc">Desarrollo de Soluciones Empresariales, Middleware (Cayver) y Arquitectura de Infraestructura TI.</p>
+            <h1 class="title-main">LUIS EDUARDO RAMÍREZ RIVAS</h1>
+            <p class="hero-desc">Desarrollo de Soluciones Empresariales y Arquitectura de Infraestructura TI.</p>
             <div class="typewriter-box">
                 > <span id="typewriter-text"></span><span class="cursor-blink">_</span>
             </div>
         </div>
     </header>
 
-    <main class="container" id="demos">
-        <h2 class="section-title"><i class="fas fa-chart-pie"></i> Laboratorio de Dashboards Interactivos</h2>
+    <main class="container" id="proyectos">
+        <h2 class="section-title"><i class="fas fa-project-diagram"></i> Ecosistema Cayver y Soluciones</h2>
         
         <div class="bento-grid">
             
-            <div class="bento-card card-xl">
+            <div class="bento-card card-main active">
                 <div class="card-header">
-                    <h3><i class="fas fa-industry neon-text-cyan"></i> Cayver: Seguimiento Producción</h3>
-                    <span class="tag tag-web">PHP / Chart.js</span>
+                    <h3><i class="fas fa-database text-accent"></i> Middleware CAYVER (Núcleo)</h3>
+                    <span class="status-badge"><span class="dot"></span> Online</span>
                 </div>
-                <p class="demo-desc">Haz clic en una fila para actualizar la gráfica de procesos.</p>
+                <p>Desarrollo de sincronización de datos desde servidor local (ERP) hacia un dashboard web en tiempo real.</p>
+                <div class="tech-stack mb-3">
+                    <span class="tag tag-sql">SQL</span>
+                    <span class="tag tag-py">Python</span>
+                    <span class="tag tag-web">PHP / C++</span>
+                </div>
                 
-                <div class="dashboard-split">
-                    <div class="dash-panel">
-                        <table class="pro-table">
-                            <thead>
-                                <tr>
-                                    <th>Pedido</th>
-                                    <th>Num Parte / Desc</th>
-                                    <th>Cant</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="interactive-row" onclick="updateProductionChart('PT-25-0001', [16, 16, 13, 17])">
-                                    <td><span class="badge-green">0002083</span></td>
-                                    <td>PT-25-0001<br><small>SOMBRILLA MON 3 MTS</small></td>
-                                    <td>19</td>
-                                    <td><button class="btn-micro">Graficar</button></td>
-                                </tr>
-                                <tr class="interactive-row" onclick="updateProductionChart('PT-11-0006', [11, 12, 11, 12])">
-                                    <td><span class="badge-green">0002119</span></td>
-                                    <td>PT-11-0006<br><small>CAMASTRO MON MESA</small></td>
-                                    <td>16</td>
-                                    <td><button class="btn-micro">Graficar</button></td>
-                                </tr>
-                                <tr class="interactive-row" onclick="updateProductionChart('PT-23-0017', [8, 8, 8, 8])">
-                                    <td><span class="badge-green">0002342</span></td>
-                                    <td>PT-23-0017<br><small>SILLON MON 4 POSICIONES</small></td>
-                                    <td>8</td>
-                                    <td><button class="btn-micro">Graficar</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="demo-panel">
+                    <div class="sync-status-box">
+                        <span>Servidor Local: <strong id="local-records">1,402</strong> registros</span>
+                        <i class="fas fa-exchange-alt text-accent"></i>
+                        <span>Nube Cayver: <strong id="cloud-records">1,402</strong> registros</span>
                     </div>
-                    <div class="dash-panel chart-container">
+                    <button id="btn-sync-cayver" class="btn-action w-100 mt-2">Simular Sincronización de ERP</button>
+                    <p id="sync-msg" class="sys-msg"></p>
+                </div>
+            </div>
+
+            <div class="bento-card active">
+                <div class="card-header">
+                    <h3><i class="fas fa-industry text-accent"></i> Seguimiento Producción</h3>
+                </div>
+                <p>Visualización de órdenes de trabajo (OT) de Cayver.</p>
+                
+                <div class="demo-panel">
+                    <table class="pro-table mb-2">
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Producto</th>
+                            <th>Acción</th>
+                        </tr>
+                        <tr>
+                            <td>0002083</td>
+                            <td>SOMBRILLA MON 3M</td>
+                            <td><button class="btn-micro btn-graficar" data-modelo="SOMBRILLA" data-vals="16,16,13,17">Ver Avance</button></td>
+                        </tr>
+                        <tr>
+                            <td>0002119</td>
+                            <td>CAMASTRO MESA</td>
+                            <td><button class="btn-micro btn-graficar" data-modelo="CAMASTRO" data-vals="11,12,11,12">Ver Avance</button></td>
+                        </tr>
+                    </table>
+                    <div class="chart-container" style="height: 180px;">
                         <canvas id="produccionChart"></canvas>
                     </div>
                 </div>
             </div>
 
-            <div class="bento-card card-large">
+            <div class="bento-card active card-large">
                 <div class="card-header">
-                    <h3><i class="fas fa-route neon-text-purple"></i> Cayver: RUTA-LDM</h3>
-                    <span class="tag tag-sql">SQL / Procesos</span>
+                    <h3><i class="fas fa-route text-accent"></i> Cayver: RUTA-LDM</h3>
+                    <span class="tag tag-sql">Gestión de Procesos</span>
                 </div>
-                <p class="demo-desc">Distribución de componentes para SILLON MIRAMAR.</p>
+                <p>Desglose de Semiterminados, Procesos y Materiales para SILLON MIRAMAR.</p>
                 
-                <div class="ruta-container">
-                    <div class="ruta-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 'Semi')"><i class="fas fa-box"></i> Semi (7)</button>
-                        <button class="tab-btn" onclick="switchTab(this, 'Proc')"><i class="fas fa-cogs"></i> Procesos (10)</button>
-                        <button class="tab-btn" onclick="switchTab(this, 'Mat')"><i class="fas fa-wrench"></i> Materiales (14)</button>
+                <div class="demo-panel">
+                    <div class="ruta-tabs mb-2">
+                        <button class="tab-btn active" data-tab="Semi"><i class="fas fa-box"></i> Semi (7)</button>
+                        <button class="tab-btn" data-tab="Proc"><i class="fas fa-cogs"></i> Procesos (10)</button>
+                        <button class="tab-btn" data-tab="Mat"><i class="fas fa-wrench"></i> Materiales (14)</button>
                     </div>
-                    <div class="dashboard-split mt-3">
-                        <div class="dash-panel chart-container" style="height: 200px;">
-                            <canvas id="rutaChart"></canvas>
-                        </div>
-                        <div class="dash-panel metrics-box">
-                            <h4>Estado de Ruta</h4>
-                            <div class="metric-item">
-                                <span>Fase actual</span>
-                                <strong id="ruta-status" class="neon-text-cyan">Enderezado (12 uds)</strong>
-                            </div>
-                        </div>
+                    <div class="ruta-content">
+                        <p>Estado actual de la ruta: <strong id="ruta-status" class="text-accent">Preparación de Semiterminados</strong></p>
+                        <div class="progress-bar-bg"><div id="ruta-progress" class="progress-bar-fill" style="width: 30%;"></div></div>
                     </div>
                 </div>
             </div>
 
-            <div class="bento-card card-large">
+            <div class="bento-card card-infra active">
                 <div class="card-header">
-                    <h3><i class="fas fa-server neon-text-cyan"></i> Monitoreo Ubuntu</h3>
-                    <span class="tag tag-ubuntu">VMWare / Bash</span>
+                    <h3><i class="fab fa-ubuntu text-accent"></i> Infraestructura IT & Backups</h3>
+                    <div class="tech-stack">
+                        <span class="tag tag-ubuntu">Ubuntu</span>
+                        <span class="tag tag-vm">VMWare</span>
+                    </div>
                 </div>
-                <p class="demo-desc">Simulación de carga del servidor y ejecución de respaldos.</p>
-                <div class="dashboard-split">
-                    <div class="dash-panel chart-container" style="height: 200px;">
-                        <canvas id="serverChart"></canvas>
+                <p>Gestión de servidores y respaldos de base de datos.</p>
+                <div class="demo-panel terminal-ui mt-2">
+                    <div class="terminal-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="term-title">root@sitmobel-server:~</span>
                     </div>
-                    <div class="dash-panel flex-column-center">
-                        <button id="btn-stress" class="btn-action w-100 mb-2"><i class="fas fa-bolt"></i> Simular Carga SQL</button>
-                        <button id="btn-backup" class="btn-action btn-outline w-100"><i class="fas fa-database"></i> Ejecutar Respaldo</button>
-                        <div id="backup-log" class="terminal-mini mt-2">
-                            > Sistema estable...
-                        </div>
+                    <div class="terminal-body" id="term-body">
+                        > Sistema listo. Esperando comando...
                     </div>
+                    <button id="btn-backup" class="btn-action w-100 mt-2">Ejecutar Script de Respaldo</button>
                 </div>
             </div>
 
