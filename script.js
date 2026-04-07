@@ -1,164 +1,165 @@
-// Esperar a que todo el HTML cargue para que los botones funcionen
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Seguimiento de Cursor (Ahora respeta el mouse original)
-    const cursor = document.querySelector('.custom-cursor');
-    if (cursor) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '45px'; cursor.style.height = '45px';
-                cursor.style.background = 'rgba(59, 130, 246, 0.1)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '30px'; cursor.style.height = '30px';
-                cursor.style.background = 'transparent';
-            });
-        });
-    }
-
-    // 2. Efecto de Escritura (Mantenido y funcionando)
-    const text = document.getElementById('typewriter-text');
-    if (text) {
-        const words = ["Middleware CAYVER", "Administración de Servidores", "Desarrollo Full Stack PHP/C++"];
-        let wordIdx = 0, charIdx = 0, deleting = false;
-
-        function playTyping() {
-            const currentWord = words[wordIdx];
-            text.innerText = currentWord.substring(0, charIdx);
-            
-            if (!deleting && charIdx < currentWord.length) {
-                charIdx++; setTimeout(playTyping, 80);
-            } else if (deleting && charIdx > 0) {
-                charIdx--; setTimeout(playTyping, 40);
-            } else {
-                deleting = !deleting;
-                if (!deleting) wordIdx = (wordIdx + 1) % words.length;
-                setTimeout(playTyping, 1500);
-            }
-        }
-        playTyping();
-    }
-
     // ==========================================
-    // LÓGICA DE BOTONES Y CAYVER (AHORA SÍ FUNCIONAN)
+    // DEMO 1: GRÁFICA DE TIEMPOS (Estilo Cayver)
     // ==========================================
+    const btnGraficar = document.getElementById('btn-graficar-tiempos');
+    let chartTiempos = null;
 
-    // DEMO 1: Sincronización Cayver (ERP -> Web)
-    const btnSync = document.getElementById('btn-sync-cayver');
-    if (btnSync) {
-        btnSync.addEventListener('click', function() {
-            const localNum = document.getElementById('local-records');
-            const cloudNum = document.getElementById('cloud-records');
-            const msg = document.getElementById('sync-msg');
+    if (btnGraficar) {
+        btnGraficar.addEventListener('click', function() {
+            const wrapper = document.getElementById('chart-wrapper');
+            const placeholder = document.getElementById('chart-placeholder');
+            const canvas = document.getElementById('tiemposChart');
             
             this.disabled = true;
-            this.innerText = "Extrayendo datos de ERP...";
-            msg.innerText = "";
-            msg.style.color = "#3b82f6";
-
-            // Simular cambio en base de datos local
-            localNum.innerText = "1,450"; 
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando datos...';
 
             setTimeout(() => {
-                this.innerText = "Procesando en C++ y subiendo...";
-            }, 1000);
+                placeholder.style.display = 'none';
+                canvas.style.display = 'block';
 
-            setTimeout(() => {
-                cloudNum.innerText = "1,450"; // La nube se actualiza
-                msg.style.color = "#10b981";
-                msg.innerText = "¡Sincronización completada con éxito!";
-                this.innerText = "Simular Sincronización de ERP";
-                this.disabled = false;
-            }, 2500);
-        });
-    }
+                // Si ya existe, destruirla para redibujar
+                if (chartTiempos) chartTiempos.destroy();
 
-    // DEMO 2: Gráfica de Producción
-    const ctxProd = document.getElementById('produccionChart');
-    if (ctxProd && typeof Chart !== 'undefined') {
-        const produccionChart = new Chart(ctxProd.getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Enderezado', 'Pulido', 'Sand Blast', 'Lavado'],
-                datasets: [{
-                    label: 'Piezas Procesadas',
-                    data: [0, 0, 0, 0], // Inicia vacío
-                    backgroundColor: '#3b82f6',
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true, max: 20, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
-            }
-        });
-
-        // Botones de la tabla para graficar
-        document.querySelectorAll('.btn-graficar').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const modelo = this.getAttribute('data-modelo');
-                const valores = this.getAttribute('data-vals').split(',').map(Number);
+                const ctx = canvas.getContext('2d');
                 
-                produccionChart.data.datasets[0].label = 'Avance: ' + modelo;
-                produccionChart.data.datasets[0].data = valores;
-                produccionChart.update();
-            });
+                // Colores en tonos Tierra/Moca de la paleta
+                const bgColors = ['#8a6d5c', '#bfa48f', '#d6c5b3'];
+
+                chartTiempos = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['PINTURA (57%)', 'SOLDADURA (43%)'],
+                        datasets: [{
+                            data: [200, 150], // Minutos basados en la tabla
+                            backgroundColor: bgColors,
+                            borderWidth: 2,
+                            borderColor: '#ffffff',
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { font: { family: "'Inter', sans-serif", weight: 'bold' } }
+                            }
+                        }
+                    }
+                });
+
+                this.innerHTML = '<i class="fas fa-check"></i> Gráfica Generada';
+                // Rehabilitar el botón después de 3 segundos por si quieren volver a darle
+                setTimeout(() => {
+                    this.disabled = false;
+                    this.innerHTML = '<i class="fas fa-chart-pie"></i> Actualizar Gráfica';
+                }, 3000);
+
+            }, 800); // Pequeño retraso simulando carga
         });
     }
 
-    // DEMO 3: Pestañas de Ruta LDM
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    // ==========================================
+    // DEMO 2: RUTA LDM (Listado de Materiales)
+    // ==========================================
+    
+    // Datos simulados extraídos de la lógica de tu código PHP
+    const ldmData = {
+        'st': [
+            { seq: '0010', desc: 'SOMBRILLA ESTRUCTURA (ST)', cant: 1.0 },
+            { seq: '0020', desc: 'TELA CORTADA Y COSIDA', cant: 1.0 }
+        ],
+        'proc': [
+            { seq: '0030', desc: 'ENSAMBLE ESTRUCTURA', cant: 1.0 },
+            { seq: '0040', desc: 'PINTURA ELECTROSTÁTICA', cant: 1.0 },
+            { seq: '0050', desc: 'EMPAQUE FINAL', cant: 1.0 }
+        ],
+        'mat': [
+            { seq: '0060', desc: 'TORNILLO 1/4 x 2"', cant: 12.0 },
+            { seq: '0070', desc: 'TAPÓN PLÁSTICO TUBULAR', cant: 4.0 },
+            { seq: '0080', desc: 'CAJA CARTÓN CORRUGADO', cant: 1.0 },
+            { seq: '0090', desc: 'ETIQUETA IDENTIFICACIÓN', cant: 1.0 }
+        ]
+    };
+
+    const tbodyLdm = document.getElementById('ldm-tbody');
+    const btnsLdm = document.querySelectorAll('.ldm-controls .btn-cat');
+
+    function renderTable(type) {
+        tbodyLdm.innerHTML = '';
+        const data = ldmData[type];
+        
+        if (!data) return;
+
+        data.forEach(item => {
+            // Asignar colores sutiles dependiendo del tipo para que se vea genial
+            let color = '#292524';
+            let icon = '';
+            if(type === 'st') { color = '#8a6d5c'; icon = '📦 '; }
+            if(type === 'proc') { color = '#0369a1'; icon = '⚙️ '; }
+            if(type === 'mat') { color = '#b91c1c'; icon = '🔩 '; }
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="font-weight: 800; color: #78716c;">${item.seq}</td>
+                <td style="font-weight: 600; color: ${color};">${icon}${item.desc}</td>
+                <td style="text-align: center; font-weight: 800;">${item.cant.toFixed(2)}</td>
+            `;
+            tbodyLdm.appendChild(tr);
+        });
+    }
+
+    // Cargar ST por defecto
+    if (tbodyLdm) renderTable('st');
+
+    btnsLdm.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Quitar clase active a todos
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active'); // Poner al que se le hizo clic
-
-            const tabId = this.getAttribute('data-tab');
-            const statusEl = document.getElementById('ruta-status');
-            const progressEl = document.getElementById('ruta-progress');
-
-            if (tabId === 'Semi') {
-                statusEl.innerText = "Preparación de Semiterminados";
-                progressEl.style.width = "30%";
-            } else if (tabId === 'Proc') {
-                statusEl.innerText = "Procesos en piso (Enderezado/Pulido)";
-                progressEl.style.width = "65%";
-            } else if (tabId === 'Mat') {
-                statusEl.innerText = "Materiales y Empaque Validado";
-                progressEl.style.width = "100%";
-            }
+            btnsLdm.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const target = this.getAttribute('data-target');
+            
+            tbodyLdm.innerHTML = '<tr><td colspan="3" style="text-align:center;"><i class="fas fa-spinner fa-spin"></i> Cargando...</td></tr>';
+            
+            setTimeout(() => {
+                renderTable(target);
+            }, 300); // Simulamos carga de base de datos
         });
     });
 
-    // DEMO 4: Botón de Backup en Terminal
+    // ==========================================
+    // DEMO 3: TERMINAL DE BACKUPS (Ubuntu)
+    // ==========================================
     const btnBackup = document.getElementById('btn-backup');
+    
     if (btnBackup) {
         btnBackup.addEventListener('click', function() {
             const term = document.getElementById('term-body');
             this.disabled = true;
-            this.innerText = "Ejecutando...";
+            this.innerText = "Ejecutando proceso en segundo plano...";
             
-            term.innerHTML = "> Iniciando mysqldump de cayver_db...<br>";
+            term.innerHTML = "<span class='text-cmd'>$ mysqldump -u admin -p cayver_db > backup_hoy.sql</span><br>";
             
             setTimeout(() => { 
-                term.innerHTML += "> Comprimiendo archivo SQL a formato .tar.gz...<br>"; 
+                term.innerHTML += "$ Comprimiendo archivo SQL a formato .tar.gz...<br>"; 
             }, 1000);
             
             setTimeout(() => { 
-                term.innerHTML += "> Transfiriendo a servidor VMWare de respaldos...<br>"; 
-            }, 2000);
+                term.innerHTML += "$ Transfiriendo a servidor VMWare seguro...<br>"; 
+            }, 2200);
             
             setTimeout(() => { 
-                term.innerHTML += "> <span style='color:#3b82f6'>[OK] Respaldo finalizado y verificado correctamente.</span>"; 
+                term.innerHTML += "<span class='text-success'>[OK] Respaldo finalizado y auditado correctamente en la ruta /backups/db/</span>"; 
                 this.disabled = false;
-                this.innerText = "Ejecutar Script de Respaldo";
-            }, 3000);
+                this.innerHTML = '<i class="fas fa-check"></i> Respaldo Completado';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-database"></i> Ejecutar Respaldo SQL';
+                }, 4000);
+
+            }, 3500);
         });
     }
 });
