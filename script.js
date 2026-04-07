@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnGraficar) {
         btnGraficar.addEventListener('click', function() {
             const placeholder = document.getElementById('chart-placeholder');
+            const canvasWrapper = document.getElementById('chart-container-box');
             const canvas = document.getElementById('tiemposChart');
             
             this.disabled = true;
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 placeholder.style.display = 'none';
-                canvas.style.display = 'block';
+                canvasWrapper.style.display = 'block';
 
                 if (chartTiempos) chartTiempos.destroy();
 
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     options: {
                         responsive: true,
-                        maintainAspectRatio: false,
+                        maintainAspectRatio: false, /* Importante para que no rompa la pantalla en celular */
                         plugins: {
                             legend: {
                                 position: 'bottom',
@@ -94,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data) return;
 
         if (type === 'proc') {
-            // MOSTRAR SCROLL HORIZONTAL DE TARJETAS PARA PROCESOS
             containerTable.style.display = 'none';
             containerScroll.style.display = 'block';
             scrollContent.innerHTML = '';
@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollContent.appendChild(card);
             });
         } else {
-            // MOSTRAR TABLA PARA ST Y MATERIALES
             containerScroll.style.display = 'none';
             containerTable.style.display = 'block';
             tbodyLdm.innerHTML = '';
@@ -132,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicializar con "st" (Semi terminados en Tabla)
     if (tbodyLdm) renderLdmView('st');
 
     btnsLdm.forEach(btn => {
@@ -141,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('active');
             const target = this.getAttribute('data-target');
             
-            // Efecto visual de carga rápida
             if (target === 'proc') {
                 containerTable.style.display = 'none';
                 containerScroll.style.display = 'block';
