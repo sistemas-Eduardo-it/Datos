@@ -1,27 +1,26 @@
-// 1. Seguimiento de Cursor (CÓDIGO ORIGINAL MANTENIDO)
+// 1. Seguimiento de Cursor (Mantenido)
 const cursor = document.querySelector('.custom-cursor');
 document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+    if(cursor.style.display !== 'none') {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    }
 });
 
-// Cambiar tamaño del cursor en enlaces y botones
-document.querySelectorAll('a, button').forEach(el => {
+document.querySelectorAll('a, button, .interactive-row').forEach(el => {
     el.addEventListener('mouseenter', () => {
-        cursor.style.width = '40px';
-        cursor.style.height = '40px';
-        cursor.style.background = 'rgba(0, 240, 255, 0.1)';
+        cursor.style.width = '40px'; cursor.style.height = '40px';
+        cursor.style.background = 'rgba(14, 165, 233, 0.1)';
     });
     el.addEventListener('mouseleave', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
+        cursor.style.width = '20px'; cursor.style.height = '20px';
         cursor.style.background = 'transparent';
     });
 });
 
-// 2. Efecto de Escritura Mejorado (CÓDIGO ORIGINAL MANTENIDO CON NUEVOS TEXTOS)
+// 2. Efecto Typewriter
 const text = document.getElementById('typewriter-text');
-const words = ["Middleware CAYVER", "Plataforma Ruta-LMD", "Automatización en Python", "Infraestructura VMWare"];
+const words = ["Arquitectura de Software", "Integración C++ / PHP", "Dashboards ERP (Cayver)"];
 let wordIdx = 0, charIdx = 0, deleting = false;
 
 function playTyping() {
@@ -29,11 +28,9 @@ function playTyping() {
     text.innerText = currentWord.substring(0, charIdx);
     
     if (!deleting && charIdx < currentWord.length) {
-        charIdx++;
-        setTimeout(playTyping, 100);
+        charIdx++; setTimeout(playTyping, 80);
     } else if (deleting && charIdx > 0) {
-        charIdx--;
-        setTimeout(playTyping, 50);
+        charIdx--; setTimeout(playTyping, 40);
     } else {
         deleting = !deleting;
         if (!deleting) wordIdx = (wordIdx + 1) % words.length;
@@ -42,77 +39,118 @@ function playTyping() {
 }
 playTyping();
 
-// 3. Revelación de elementos al Scroll (CÓDIGO ORIGINAL MANTENIDO)
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
-    });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
 // -------------------------------------------------------------
-// 4. LÓGICA DE LOS DEMOS INTERACTIVOS (NUEVO)
+// 3. LÓGICA DE GRÁFICAS INTERACTIVAS (CHART.JS)
 // -------------------------------------------------------------
 
-// Demo 1: Cayver
-document.getElementById('btn-cayver').addEventListener('click', function() {
-    const status = document.getElementById('cayver-status');
-    const tbody = document.getElementById('cayver-tbody');
-    this.disabled = true;
-    this.innerText = 'Procesando C++...';
-    
-    setTimeout(() => {
-        tbody.innerHTML = `
-            <tr><td>MTR-0045</td><td>15</td><td class="alert-green">OK (Repuesto)</td></tr>
-            <tr><td>VLV-9812</td><td>44</td><td class="alert-green">OK</td></tr>
-        `;
-        status.innerText = 'Sincronizado vía MySQL';
-        this.innerText = 'Datos Actualizados';
-        this.style.borderColor = '#00ff66';
-        this.style.color = '#00ff66';
-    }, 1500);
-});
+// Configuración global para Chart.js (Tema oscuro)
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.font.family = "'Space Grotesk', sans-serif";
 
-// Demo 2: Ruta LMD
-document.getElementById('btn-ruta').addEventListener('click', function() {
-    const dest = document.getElementById('route-dest');
-    this.disabled = true;
-    this.innerText = 'Calculando ruta...';
-    
-    // Anima la barra mediante CSS inyectado
-    document.getElementById('route-line').style.background = 'linear-gradient(90deg, var(--neon-purple) 100%, #333 100%)';
-    
-    setTimeout(() => {
-        dest.classList.add('active');
-        this.innerText = 'Paquete Entregado';
-        this.style.borderColor = var(--neon-purple);
-    }, 1000);
-});
-
-// Demo 3: Seguimiento Ticket
-let progress = 50;
-document.getElementById('btn-ticket').addEventListener('click', function() {
-    if(progress < 100) {
-        progress += 50;
-        document.getElementById('ticket-progress').style.width = progress + '%';
-        document.getElementById('ticket-status').innerText = progress === 100 ? 'Completado (100%)' : 'En Progreso ('+progress+'%)';
-        if(progress === 100) {
-            this.innerText = 'Ticket Cerrado';
-            this.disabled = true;
-        }
+// --- GRÁFICA 1: PRODUCCIÓN (Basada en tus procesos) ---
+const ctxProd = document.getElementById('produccionChart').getContext('2d');
+let produccionChart = new Chart(ctxProd, {
+    type: 'bar',
+    data: {
+        labels: ['Enderezado', 'Pulido', 'Sand Blast', 'Lavado'], // Procesos de tu imagen
+        datasets: [{
+            label: 'Piezas Completadas (PT-25-0001)',
+            data: [16, 16, 13, 17],
+            backgroundColor: '#10b981', // Verde éxito
+            borderRadius: 4
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: {display: true, text: 'Avance por Proceso'} },
+        scales: { y: { beginAtZero: true, max: 20, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
     }
 });
 
-// Demo 4: Terminal Backups
-document.getElementById('btn-backup').addEventListener('click', function() {
-    const term = document.getElementById('term-body');
-    this.disabled = true;
-    term.innerHTML = "> Iniciando mysqldump...<br>";
+// Función que se ejecuta al hacer clic en la tabla
+window.updateProductionChart = function(modelo, datos) {
+    produccionChart.data.datasets[0].label = 'Piezas Completadas (' + modelo + ')';
+    produccionChart.data.datasets[0].data = datos;
+    produccionChart.update();
+};
+
+// --- GRÁFICA 2: RUTA LDM (Distribución) ---
+const ctxRuta = document.getElementById('rutaChart').getContext('2d');
+let rutaChart = new Chart(ctxRuta, {
+    type: 'doughnut',
+    data: {
+        labels: ['Semi terminados', 'Procesos', 'Materiales'],
+        datasets: [{
+            data: [7, 10, 14],
+            backgroundColor: ['#eab308', '#ef4444', '#0ea5e9'], // Amarillo, Rojo, Cyan
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '70%',
+        plugins: { legend: { position: 'bottom' } }
+    }
+});
+
+// Función para las pestañas de Ruta
+window.switchTab = function(btn, tipo) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
     
-    setTimeout(() => { term.innerHTML += "> Comprimiendo a .tar.gz...<br>"; }, 800);
-    setTimeout(() => { term.innerHTML += "> Enviando a VMWare Backup Server...<br>"; }, 1600);
-    setTimeout(() => { 
-        term.innerHTML += "> <span style='color:#fff'>[OK] Respaldo finalizado con éxito.</span>"; 
-        this.innerText = 'Backup Completado';
-    }, 2400);
+    // Simular actualización de estado
+    const statusEl = document.getElementById('ruta-status');
+    if(tipo.includes('Semi')) statusEl.innerText = "Preparación (7 uds)";
+    if(tipo.includes('Proc')) statusEl.innerText = "Enderezado (12 uds)";
+    if(tipo.includes('Mat')) statusEl.innerText = "Almacén Validado";
+};
+
+// --- GRÁFICA 3: MONITOREO DE SERVIDOR ---
+const ctxServer = document.getElementById('serverChart').getContext('2d');
+const initData = Array.from({length: 10}, () => Math.floor(Math.random() * 30) + 10);
+let serverChart = new Chart(ctxServer, {
+    type: 'line',
+    data: {
+        labels: ['1m', '2m', '3m', '4m', '5m', '6m', '7m', '8m', '9m', 'Now'],
+        datasets: [{
+            label: 'Uso de CPU (%)',
+            data: initData,
+            borderColor: '#8b5cf6',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: {display: true, text: 'Carga de Servidor Ubuntu'} },
+        scales: { y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
+    }
+});
+
+// Simular botón de estrés
+document.getElementById('btn-stress').addEventListener('click', function() {
+    this.disabled = true; this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Simulando...';
+    
+    let stressInterval = setInterval(() => {
+        let newData = serverChart.data.datasets[0].data.slice(1);
+        newData.push(Math.floor(Math.random() * 30) + 65); // Sube el uso de CPU a 65-95%
+        serverChart.data.datasets[0].data = newData;
+        serverChart.update();
+    }, 500);
+
+    setTimeout(() => {
+        clearInterval(stressInterval);
+        this.disabled = false; this.innerHTML = '<i class="fas fa-bolt"></i> Simular Carga SQL';
+        // Volver a la normalidad
+        serverChart.data.datasets[0].data = initData; serverChart.update();
+    }, 4000);
+});
+
+// Terminal Backup
+document.getElementById('btn-backup').addEventListener('click', function() {
+    const log = document.getElementById('backup-log');
+    this.disabled = true;
+    log.innerHTML = "> mysqldump cayver_db...<br>";
+    setTimeout(() => { log.innerHTML += "> Comprimiendo .gz...<br>"; }, 800);
+    setTimeout(() => { log.innerHTML += "> <span style='color:#0ea5e9'>[OK] Backup en VMWare.</span>"; this.disabled = false; }, 1800);
 });
