@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <header class="hero reveal">
+    <header class="hero">
         <div class="hero-content">
             <div class="tech-badge"><i class="fas fa-terminal"></i> Head of Systems @ Sitmobel</div>
             <h1 class="neon-text-title">LUIS EDUARDO RAMÍREZ RIVAS</h1>
@@ -42,12 +42,12 @@
         
         <div class="bento-grid">
             
-            <div class="bento-card reveal card-xl">
+            <div class="bento-card card-xl">
                 <div class="card-header">
                     <h3><i class="fas fa-industry neon-text-cyan"></i> Cayver: Seguimiento Producción</h3>
                     <span class="tag tag-web">PHP / Chart.js</span>
                 </div>
-                <p class="demo-desc">Visualización de órdenes de trabajo (OT) y métricas de avance por proceso.</p>
+                <p class="demo-desc">Haz clic en una fila para actualizar la gráfica de procesos.</p>
                 
                 <div class="dashboard-split">
                     <div class="dash-panel">
@@ -57,7 +57,7 @@
                                     <th>Pedido</th>
                                     <th>Num Parte / Desc</th>
                                     <th>Cant</th>
-                                    <th>Avance</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,13 +65,19 @@
                                     <td><span class="badge-green">0002083</span></td>
                                     <td>PT-25-0001<br><small>SOMBRILLA MON 3 MTS</small></td>
                                     <td>19</td>
-                                    <td><button class="btn-micro">Ver Gráfica</button></td>
+                                    <td><button class="btn-micro">Graficar</button></td>
                                 </tr>
                                 <tr class="interactive-row" onclick="updateProductionChart('PT-11-0006', [11, 12, 11, 12])">
                                     <td><span class="badge-green">0002119</span></td>
                                     <td>PT-11-0006<br><small>CAMASTRO MON MESA</small></td>
                                     <td>16</td>
-                                    <td><button class="btn-micro">Ver Gráfica</button></td>
+                                    <td><button class="btn-micro">Graficar</button></td>
+                                </tr>
+                                <tr class="interactive-row" onclick="updateProductionChart('PT-23-0017', [8, 8, 8, 8])">
+                                    <td><span class="badge-green">0002342</span></td>
+                                    <td>PT-23-0017<br><small>SILLON MON 4 POSICIONES</small></td>
+                                    <td>8</td>
+                                    <td><button class="btn-micro">Graficar</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -82,49 +88,42 @@
                 </div>
             </div>
 
-            <div class="bento-card reveal card-large">
+            <div class="bento-card card-large">
                 <div class="card-header">
                     <h3><i class="fas fa-route neon-text-purple"></i> Cayver: RUTA-LDM</h3>
-                    <span class="tag tag-sql">SQL / Lógica de Procesos</span>
+                    <span class="tag tag-sql">SQL / Procesos</span>
                 </div>
-                <p class="demo-desc">Desglose de Semiterminados, Procesos y Materiales.</p>
+                <p class="demo-desc">Distribución de componentes para SILLON MIRAMAR.</p>
                 
                 <div class="ruta-container">
-                    <div class="ruta-header">
-                        <i class="fas fa-folder text-warning"></i> PT-23-0024 | SILLON MIRAMAR ALUMINIO SLING
-                    </div>
                     <div class="ruta-tabs">
-                        <button class="tab-btn active" onclick="switchTab(this, 'Semi (7)')"><i class="fas fa-box"></i> Semi terminados (7)</button>
-                        <button class="tab-btn" onclick="switchTab(this, 'Proc (10)')"><i class="fas fa-cogs"></i> Procesos (10)</button>
-                        <button class="tab-btn" onclick="switchTab(this, 'Mat (14)')"><i class="fas fa-wrench"></i> Materiales (14)</button>
+                        <button class="tab-btn active" onclick="switchTab(this, 'Semi')"><i class="fas fa-box"></i> Semi (7)</button>
+                        <button class="tab-btn" onclick="switchTab(this, 'Proc')"><i class="fas fa-cogs"></i> Procesos (10)</button>
+                        <button class="tab-btn" onclick="switchTab(this, 'Mat')"><i class="fas fa-wrench"></i> Materiales (14)</button>
                     </div>
                     <div class="dashboard-split mt-3">
-                        <div class="dash-panel">
+                        <div class="dash-panel chart-container" style="height: 200px;">
                             <canvas id="rutaChart"></canvas>
                         </div>
                         <div class="dash-panel metrics-box">
-                            <h4>Métricas de Ruta</h4>
+                            <h4>Estado de Ruta</h4>
                             <div class="metric-item">
-                                <span>Tiempo Est.</span>
-                                <strong class="neon-text-cyan">04:09 PM</strong>
-                            </div>
-                            <div class="metric-item">
-                                <span>Estado actual</span>
-                                <strong id="ruta-status" class="text-success">Enderezado (12 uds)</strong>
+                                <span>Fase actual</span>
+                                <strong id="ruta-status" class="neon-text-cyan">Enderezado (12 uds)</strong>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bento-card reveal card-large">
+            <div class="bento-card card-large">
                 <div class="card-header">
-                    <h3><i class="fas fa-server neon-text-cyan"></i> Monitoreo de Infraestructura</h3>
-                    <span class="tag tag-ubuntu">Ubuntu / VMWare</span>
+                    <h3><i class="fas fa-server neon-text-cyan"></i> Monitoreo Ubuntu</h3>
+                    <span class="tag tag-ubuntu">VMWare / Bash</span>
                 </div>
-                <p class="demo-desc">Gráfica en tiempo real simulando la carga del servidor de bases de datos.</p>
+                <p class="demo-desc">Simulación de carga del servidor y ejecución de respaldos.</p>
                 <div class="dashboard-split">
-                    <div class="dash-panel">
+                    <div class="dash-panel chart-container" style="height: 200px;">
                         <canvas id="serverChart"></canvas>
                     </div>
                     <div class="dash-panel flex-column-center">
