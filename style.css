@@ -14,6 +14,9 @@
     --pastel-gray: #f5f5f4; --text-gray: #44403c;
 }
 
+/* ANTI-DESBORDE PARA CELULARES */
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -21,6 +24,9 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Evita cualquier desplazamiento horizontal de la página */
+    width: 100vw;
+    max-width: 100%;
 }
 
 /* NAVEGACIÓN */
@@ -38,13 +44,14 @@ body {
 .hero-desc { color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
 
 /* GRID BENTO */
-.container { max-width: 1100px; margin: 0 auto; padding: 20px 20px 60px; }
-.section-title { color: var(--text-dark); border-bottom: 2px solid var(--border-light); padding-bottom: 10px; margin-bottom: 30px; font-size: 1.5rem; font-weight: 800; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px 20px 60px; width: 100%; }
+.section-title { color: var(--text-dark); border-bottom: 2px solid var(--border-light); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; font-weight: 800; }
 
-.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-.bento-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s ease; }
+.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; }
+.bento-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s ease; width: 100%;}
 .bento-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-color: var(--accent-brown); }
 .card-large { grid-column: 1 / -1; } 
+.profile-card { background: #faf9f8; border-color: var(--accent-brown); border-left: 6px solid var(--accent-brown);}
 
 .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;}
 .card-header h3 { margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-dark); }
@@ -53,30 +60,31 @@ body {
 
 /* TAGS PASTEL */
 .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.tag { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+.tag { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;}
 .tag-blue { background: var(--pastel-blue); color: var(--text-blue); }
 .tag-orange { background: var(--pastel-orange); color: var(--text-orange); }
 .tag-green { background: var(--pastel-green); color: var(--text-green); }
 .tag-red { background: var(--pastel-red); color: var(--text-red); }
 .tag-gray { background: var(--pastel-gray); color: var(--text-gray); border: 1px solid var(--border-light); }
 
-/* PANELES Y TABLAS */
-.demo-panel { background: #faf9f8; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; }
-.dashboard-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;}
-.panel-left, .panel-right { background: #fff; border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; }
+/* PANELES Y TABLAS ANTI-DESBORDE */
+.demo-panel { background: #faf9f8; border: 1px solid var(--border-light); border-radius: 12px; padding: 20px; width: 100%; }
+.dashboard-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; width: 100%;}
+.panel-left, .panel-right { background: #fff; border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; width: 100%; overflow: hidden;}
 .panel-right { display: flex; align-items: center; justify-content: center; min-height: 250px; }
-.empty-state { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
+.empty-state { color: var(--text-muted); font-size: 0.9rem; font-style: italic; text-align: center;}
 
-.pro-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+.table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pro-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; min-width: 250px;}
 .pro-table th { background: var(--pastel-gray); padding: 12px 10px; color: var(--text-dark); font-weight: 700; border-bottom: 2px solid var(--border-light); text-transform: uppercase; letter-spacing: 0.5px;}
 .pro-table td { padding: 12px 10px; border-bottom: 1px solid var(--border-light); color: var(--text-dark); vertical-align: middle;}
 .pro-table tbody tr:hover { background: #faf9f8; }
 
-/* RUTA Y SCROLL HORIZONTAL (NUEVO) */
+/* RUTA Y SCROLL HORIZONTAL */
 .pt-bar { background: #fff; border: 1px solid var(--border-light); border-left: 5px solid var(--accent-brown); padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.02);}
 .ldm-controls { display: flex; gap: 10px; flex-wrap: wrap; }
 
-.process-flow { display: flex; overflow-x: auto; gap: 15px; padding: 10px 5px 20px 5px; scroll-behavior: smooth; }
+.process-flow { display: flex; overflow-x: auto; gap: 15px; padding: 10px 5px 20px 5px; scroll-behavior: smooth; width: 100%; -webkit-overflow-scrolling: touch;}
 .process-flow::-webkit-scrollbar { height: 8px; }
 .process-flow::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 10px; }
 .process-flow::-webkit-scrollbar-thumb:hover { background: #d6d3d1; }
@@ -98,13 +106,18 @@ body {
 
 .w-100 { width: 100%; } .mt-3 { margin-top: 15px; }
 
-/* RESPONSIVE */
+/* RESPONSIVE MÓVIL OPTIMIZADO */
 @media (max-width: 768px) {
     .nav-content { flex-direction: column; gap: 15px; padding: 15px; }
-    .hero { padding: 60px 20px 40px; }
+    .hero { padding: 40px 15px 30px; }
     .title-main { font-size: 2rem; }
+    .container { padding: 10px 15px 40px; }
+    .bento-card { padding: 20px 15px; } /* Menos padding en celular para aprovechar pantalla */
     .dashboard-split { grid-template-columns: 1fr; }
     .pt-bar { flex-direction: column; align-items: flex-start; gap: 5px; }
     .ldm-controls { flex-direction: column; width: 100%; }
     .btn-cat { width: 100%; text-align: center; }
+    .demo-panel { padding: 15px 10px; }
+    /* Ajuste vital para la gráfica en celular */
+    .chart-box { height: 250px !important; }
 }
