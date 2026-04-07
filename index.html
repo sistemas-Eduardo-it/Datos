@@ -3,71 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduardo | IT Systems Architect & Dev</title>
+    <title>Lic. Eduardo | Arquitectura de Sistemas y Desarrollo</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="background-effects">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
-    </div>
-
-    <nav class="cyber-nav">
+    <nav class="navbar">
         <div class="nav-content">
-            <span class="logo">ED // IT.SYS</span>
+            <span class="logo">LIC. EDUARDO <span class="divider">|</span> IT SYSTEMS</span>
             <div class="nav-links">
+                <a href="#experiencia">Experiencia</a>
                 <a href="#proyectos">Proyectos</a>
-                <a href="Eduardo Ramirez CV.pdf" download class="btn-neon">Descargar CV <i class="fas fa-file-download"></i></a>
+                <a href="Eduardo Ramirez CV.pdf" download class="btn-primary">Descargar CV</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <div class="tech-badge"><i class="fas fa-terminal"></i> Sitmobel | Head of Systems</div>
-            <h1 class="neon-text">EDUARDO</h1>
-            <p class="typewriter-container">
-                > <span id="typewriter-text"></span><span class="cursor">_</span>
+            <span class="badge">Head of Systems @ Sitmobel</span>
+            <h1>Soluciones de Software e Infraestructura TI</h1>
+            <p class="hero-description">
+                Especialista en la optimización de procesos operativos mediante el desarrollo Full Stack y la gestión de arquitecturas de red robustas.
             </p>
-            <p class="subtitle">Arquitecto de Infraestructura IT & Desarrollador Fullstack</p>
+            <div class="typewriter-container">
+                <span id="typewriter-text"></span><span class="cursor">|</span>
+            </div>
         </div>
     </header>
 
     <main class="container">
         <section id="proyectos">
-            <h2 class="section-title"><i class="fas fa-network-wired"></i> Ecosistema de Proyectos</h2>
+            <h2 class="section-title">Proyectos Destacados</h2>
             
-            <div class="bento-grid">
-                <div class="bento-card card-main reveal">
-                    <div class="card-icon"><i class="fas fa-server"></i><i class="fas fa-arrow-right-arrow-left"></i><i class="fas fa-globe"></i></div>
-                    <h3>Middleware ERP CAYVER</h3>
-                    <p>Extracción y sincronización de datos desde servidor local hacia un dashboard web en tiempo real.</p>
-                    <div class="tech-stack">
-                        <span class="tag tag-sql">SQL</span>
-                        <span class="tag tag-py">Python</span>
-                        <span class="tag tag-web">PHP/Web</span>
+            <div class="project-showcase">
+                <div class="project-main">
+                    <div class="project-info">
+                        <span class="project-tag">Flagship Project</span>
+                        <h3>Sistema Cayver: Middleware de Alto Rendimiento</h3>
+                        <p>Desarrollo de una solución integral de sincronización de datos ERP. Utiliza un núcleo en <strong>C++</strong> para el procesamiento intensivo de datos y una interfaz <strong>PHP/Web</strong> para la visualización gerencial en tiempo real.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Sincronización local-nube automatizada.</li>
+                            <li><i class="fas fa-check"></i> Optimización de consultas mediante lógica en C++.</li>
+                            <li><i class="fas fa-check"></i> Dashboard responsivo para toma de decisiones.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tag">PHP</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Python</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bento-card card-creative reveal">
-                    <div class="card-icon"><i class="fas fa-cube"></i></div>
-                    <h3>3D & Game Engine</h3>
-                    <p>Creación de entornos y lógica de juegos interactivos.</p>
-                    <div class="tech-stack">
-                        <span class="tag tag-blender">Blender</span>
-                        <span class="tag tag-godot">Godot</span>
+                <div class="grid-secondary">
+                    <div class="small-card">
+                        <i class="fas fa-server"></i>
+                        <h4>Infraestructura IT</h4>
+                        <p>Gestión de servidores Ubuntu y virtualización con VMWare para entornos de producción.</p>
                     </div>
-                </div>
-
-                <div class="bento-card card-infra reveal">
-                    <div class="card-icon"><i class="fab fa-ubuntu"></i></div>
-                    <h3>IT Infrastructure</h3>
-                    <p>Virtualización y gestión de redes empresariales sólidas.</p>
-                    <div class="tech-stack">
-                        <span class="tag tag-ubuntu">Ubuntu</span>
-                        <span class="tag tag-vm">VMWare</span>
+                    <div class="small-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h4>Interactive Dev</h4>
+                        <p>Modelado 3D y lógica de sistemas interactivos aplicados a simulación.</p>
                     </div>
                 </div>
             </div>
