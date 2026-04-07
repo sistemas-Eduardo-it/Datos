@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lic. Eduardo Ramírez | Arquitectura TI y Desarrollo Full Stack</title>
+    <title>Lic. Eduardo Ramírez | Soluciones Full Stack y Arquitectura TI</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <span class="logo">LIC. E. RAMÍREZ <span class="divider">/</span> <span class="title-sub">IT SYSTEMS</span></span>
+            <span class="logo">LIC. E. RAMÍREZ <span class="divider">//</span> IT & DEV SOLUTIONS</span>
             <div class="nav-links">
-                <a href="#demostracion">Cayver Demo</a>
-                <a href="#proyectos">Portafolio</a>
-                <a href="Eduardo Ramirez CV.pdf" download class="btn-cv">CV <i class="fas fa-file-download"></i></a>
+                <a href="#destacado">Middleware Cayver</a>
+                <a href="#soluciones">Portafolio de Soluciones</a>
+                <a href="Eduardo Ramirez CV.pdf" download class="btn-download">Descargar CV <i class="fas fa-file-pdf"></i></a>
             </div>
         </div>
     </nav>
@@ -23,9 +23,9 @@
     <header class="hero">
         <div class="hero-content">
             <div class="badge">Head of Systems @ Sitmobel</div>
-            <h1>Desarrollo Full Stack y Arquitectura de Infraestructura TI</h1>
+            <h1>Arquitectura de Sistemas y Desarrollo Full Stack Jr.</h1>
             <p class="hero-description">
-                Especialista en la optimización de procesos operativos mediante la integración de soluciones de software robustas y la gestión eficiente de servidores y redes empresariales.
+                Lidero la infraestructura TI en Sitmobel mientras desarrollo soluciones web de alto rendimiento. Experto en optimizar procesos complejos mediante la integración de C++, PHP, y Python.
             </p>
             <div class="typewriter-container">
                 > <span id="typewriter-text"></span><span class="cursor">|</span>
@@ -34,13 +34,13 @@
     </header>
 
     <main class="container">
-        <section id="demostracion" class="cayver-demo-section">
-            <h2 class="section-title">Demostración Funcional: Middleware CAYVER</h2>
-            <p class="section-subtitle">Simulación de sincronización de datos ERP en tiempo real optimizada con lógica C++.</p>
+        <section id="destacado" class="flagship-section">
+            <h2 class="section-title">Solución Buque Insignia: Middleware CAYVER</h2>
+            <p class="section-subtitle">Sincronización automatizada de inventarios críticos entre ERP local y Nube, optimizada con núcleo C++.</p>
             
             <div class="cayver-dashboard">
                 <div class="dashboard-header">
-                    <h3>Panel de Monitoreo de Inventario Crítico</h3>
+                    <h3>Dashboard de Monitoreo de Stock Crítico</h3>
                     <div class="status-panel">
                         <span id="sync-status" class="status-indicator">Sincronizado</span>
                         <span id="last-sync-time" class="timestamp">Última actualización: --:--:--</span>
@@ -51,10 +51,10 @@
                     <table class="cayver-table">
                         <thead>
                             <tr>
-                                <th>Código SKU</th>
-                                <th>Descripción del Producto</th>
-                                <th>Almacén Local</th>
-                                <th>Estado de Stock</th>
+                                <th>SKU</th>
+                                <th>Producto</th>
+                                <th>Almacén</th>
+                                <th>Estado</th>
                                 <th>Acción Sugerida</th>
                             </tr>
                         </thead>
@@ -64,32 +64,50 @@
                 </div>
 
                 <div class="dashboard-controls">
-                    <p class="description-small">Este panel simula la visualización web de datos extraídos y procesados por el núcleo C++ desde su servidor local.</p>
-                    <button id="sync-button" class="btn-primary">Sincronizar Manualmente <i class="fas fa-sync-alt"></i></button>
+                    <p class="description-small">Simulación web de datos extraídos y procesados por el núcleo C++ desde el ERP local.</p>
+                    <button id="sync-button" class="btn-primary">Actualizar Datos <i class="fas fa-sync-alt"></i></button>
                 </div>
             </div>
         </section>
 
-        <section id="proyectos" class="portfolio-section">
-            <h2 class="section-title">Ecosistema de Soluciones</h2>
+        <section id="soluciones" class="portfolio-section">
+            <h2 class="section-title">Ecosistema de Soluciones Desarrolladas</h2>
             
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div class="card-icon"><i class="fas fa-server"></i><i class="fab fa-python"></i></div>
-                    <h4>Integración & Middleware</h4>
-                    <p>Desarrollo de conectores automatizados para sincronización de bases de datos ERP (SQL Server/MySQL) utilizando Python y PHP.</p>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h4>Plataforma RUTA-LMD</h4>
+                    <p>Dashboard web para la optimización de rutas de 'Última Milla'. Integra algoritmos de Python para trazado eficiente y una interfaz PHP/JS para monitoreo en tiempo real.</p>
+                    <div class="card-tech">
+                        <span>Python</span> <span>PHP</span> <span>Google Maps API</span>
+                    </div>
                 </div>
 
-                <div class="bento-card">
-                    <div class="card-icon"><i class="fab fa-ubuntu"></i><i class="fas fa-network-wired"></i></div>
-                    <h4>Infraestructura Crítica</h4>
-                    <p>Administración de servidores Ubuntu, virtualización con VMWare y configuración de redes empresariales (VPN, Seguridad, Backups).</p>
+                <div class="solution-card">
+                    <div class="card-icon"><i class="fas fa-tasks"></i></div>
+                    <h4>Sistema de Seguimiento Integrado</h4>
+                    <p>Aplicación web para el tracking de procesos internos o activos fijos. Centraliza datos de múltiples orígenes (SQL Server/MySQL) para ofrecer visibilidad gerencial.</p>
+                    <div class="card-tech">
+                        <span>Full Stack PHP</span> <span>SQL Server</span> <span>Chart.js</span>
+                    </div>
                 </div>
 
-                <div class="bento-card card-interactive">
-                    <div class="card-icon"><i class="fas fa-cubes"></i><i class="fas fa-code"></i></div>
-                    <h4>Simulación e Interactividad</h4>
-                    <p>Creación de entornos y lógica para sistemas interactivos con enfoque en la optimización de algoritmos complejos.</p>
+                <div class="solution-card">
+                    <div class="card-icon"><i class="fas fa-database"></i><i class="fas fa-shield-alt"></i></div>
+                    <h4>Gestión de Datos & Backups</h4>
+                    <p>Panel de administración y auditoría de bases de datos críticas. Automatiza scripts de respaldo y verifica la integridad de las réplicas en entornos virtualizados (VMWare).</p>
+                    <div class="card-tech">
+                        <span>MySQL/SQL Server</span> <span>Bash</span> <span>VMWare</span>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Dashboards de Inteligencia Empresarial</h4>
+                    <p>Creación de vistas consolidadas de KPIs clave para la toma de decisiones, extrayendo información compleja de los ERPs empresariales.</p>
+                    <div class="card-tech">
+                        <span>PHP</span> <span>C++ (Middleware)</span> <span>Data Viz</span>
+                    </div>
                 </div>
             </div>
         </section>
