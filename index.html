@@ -3,71 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lic. Eduardo | Arquitectura de Sistemas y Desarrollo</title>
+    <title>Lic. Eduardo Ramírez | Arquitectura TI y Desarrollo Full Stack</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <span class="logo">LIC. EDUARDO <span class="divider">|</span> IT SYSTEMS</span>
+            <span class="logo">LIC. E. RAMÍREZ <span class="divider">/</span> <span class="title-sub">IT SYSTEMS</span></span>
             <div class="nav-links">
-                <a href="#experiencia">Experiencia</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="Eduardo Ramirez CV.pdf" download class="btn-primary">Descargar CV</a>
+                <a href="#demostracion">Cayver Demo</a>
+                <a href="#proyectos">Portafolio</a>
+                <a href="Eduardo Ramirez CV.pdf" download class="btn-cv">CV <i class="fas fa-file-download"></i></a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="badge">Head of Systems @ Sitmobel</span>
-            <h1>Soluciones de Software e Infraestructura TI</h1>
+            <div class="badge">Head of Systems @ Sitmobel</div>
+            <h1>Desarrollo Full Stack y Arquitectura de Infraestructura TI</h1>
             <p class="hero-description">
-                Especialista en la optimización de procesos operativos mediante el desarrollo Full Stack y la gestión de arquitecturas de red robustas.
+                Especialista en la optimización de procesos operativos mediante la integración de soluciones de software robustas y la gestión eficiente de servidores y redes empresariales.
             </p>
             <div class="typewriter-container">
-                <span id="typewriter-text"></span><span class="cursor">|</span>
+                > <span id="typewriter-text"></span><span class="cursor">|</span>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <section id="proyectos">
-            <h2 class="section-title">Proyectos Destacados</h2>
+        <section id="demostracion" class="cayver-demo-section">
+            <h2 class="section-title">Demostración Funcional: Middleware CAYVER</h2>
+            <p class="section-subtitle">Simulación de sincronización de datos ERP en tiempo real optimizada con lógica C++.</p>
             
-            <div class="project-showcase">
-                <div class="project-main">
-                    <div class="project-info">
-                        <span class="project-tag">Flagship Project</span>
-                        <h3>Sistema Cayver: Middleware de Alto Rendimiento</h3>
-                        <p>Desarrollo de una solución integral de sincronización de datos ERP. Utiliza un núcleo en <strong>C++</strong> para el procesamiento intensivo de datos y una interfaz <strong>PHP/Web</strong> para la visualización gerencial en tiempo real.</p>
-                        <ul class="project-features">
-                            <li><i class="fas fa-check"></i> Sincronización local-nube automatizada.</li>
-                            <li><i class="fas fa-check"></i> Optimización de consultas mediante lógica en C++.</li>
-                            <li><i class="fas fa-check"></i> Dashboard responsivo para toma de decisiones.</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span class="tag">PHP</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Python</span>
-                        </div>
+            <div class="cayver-dashboard">
+                <div class="dashboard-header">
+                    <h3>Panel de Monitoreo de Inventario Crítico</h3>
+                    <div class="status-panel">
+                        <span id="sync-status" class="status-indicator">Sincronizado</span>
+                        <span id="last-sync-time" class="timestamp">Última actualización: --:--:--</span>
                     </div>
                 </div>
 
-                <div class="grid-secondary">
-                    <div class="small-card">
-                        <i class="fas fa-server"></i>
-                        <h4>Infraestructura IT</h4>
-                        <p>Gestión de servidores Ubuntu y virtualización con VMWare para entornos de producción.</p>
-                    </div>
-                    <div class="small-card">
-                        <i class="fas fa-gamepad"></i>
-                        <h4>Interactive Dev</h4>
-                        <p>Modelado 3D y lógica de sistemas interactivos aplicados a simulación.</p>
-                    </div>
+                <div class="cayver-table-container">
+                    <table class="cayver-table">
+                        <thead>
+                            <tr>
+                                <th>Código SKU</th>
+                                <th>Descripción del Producto</th>
+                                <th>Almacén Local</th>
+                                <th>Estado de Stock</th>
+                                <th>Acción Sugerida</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cayver-data-body">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="dashboard-controls">
+                    <p class="description-small">Este panel simula la visualización web de datos extraídos y procesados por el núcleo C++ desde su servidor local.</p>
+                    <button id="sync-button" class="btn-primary">Sincronizar Manualmente <i class="fas fa-sync-alt"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="portfolio-section">
+            <h2 class="section-title">Ecosistema de Soluciones</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="card-icon"><i class="fas fa-server"></i><i class="fab fa-python"></i></div>
+                    <h4>Integración & Middleware</h4>
+                    <p>Desarrollo de conectores automatizados para sincronización de bases de datos ERP (SQL Server/MySQL) utilizando Python y PHP.</p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon"><i class="fab fa-ubuntu"></i><i class="fas fa-network-wired"></i></div>
+                    <h4>Infraestructura Crítica</h4>
+                    <p>Administración de servidores Ubuntu, virtualización con VMWare y configuración de redes empresariales (VPN, Seguridad, Backups).</p>
+                </div>
+
+                <div class="bento-card card-interactive">
+                    <div class="card-icon"><i class="fas fa-cubes"></i><i class="fas fa-code"></i></div>
+                    <h4>Simulación e Interactividad</h4>
+                    <p>Creación de entornos y lógica para sistemas interactivos con enfoque en la optimización de algoritmos complejos.</p>
                 </div>
             </div>
         </section>
