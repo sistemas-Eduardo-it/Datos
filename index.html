@@ -94,37 +94,25 @@
                     
                     <div class="ldm-controls mt-3">
                         <button class="btn-cat active" data-target="st">📦 Semi terminados (2)</button>
-                        <button class="btn-cat" data-target="proc">⚙️ Procesos (3)</button>
+                        <button class="btn-cat" data-target="proc">⚙️ Procesos (6)</button>
                         <button class="btn-cat" data-target="mat">🔩 Materiales (4)</button>
                     </div>
 
                     <div class="ldm-content mt-3">
-                        <table class="pro-table" id="tabla-ldm">
-                            <thead><tr><th>SEQ</th><th>Descripción</th><th style="text-align: center;">Cant</th></tr></thead>
-                            <tbody id="ldm-tbody">
-                                </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                        <div id="ldm-table-container">
+                            <table class="pro-table" id="tabla-ldm">
+                                <thead><tr><th>SEQ</th><th>Descripción</th><th style="text-align: center;">Cant</th></tr></thead>
+                                <tbody id="ldm-tbody">
+                                    </tbody>
+                            </table>
+                        </div>
 
-            <div class="bento-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-server text-brown"></i> Adm. de Servidores</h3>
-                    <span class="tag tag-red">Ubuntu / VMWare</span>
-                </div>
-                <p class="demo-desc">Simulación de consola de respaldos de bases de datos críticas.</p>
-                
-                <div class="demo-panel terminal-light mt-3">
-                    <div class="terminal-header">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                        <span style="margin-left: 10px; font-family: monospace; color: #8c7b70; font-size: 12px;">root@sitmobel:~</span>
-                    </div>
-                    <div class="terminal-body" id="term-body">
-                        $ Esperando comando de ejecución...
+                        <div id="ldm-scroll-container" style="display: none;">
+                            <div class="process-flow" id="ldm-scroll-content">
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <button id="btn-backup" class="btn-action w-100 mt-3"><i class="fas fa-database"></i> Ejecutar Respaldo SQL</button>
             </div>
 
         </div>
