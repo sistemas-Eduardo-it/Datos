@@ -2,7 +2,7 @@
 <html lang="es-MX">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Luis Eduardo Ramírez Rivas | IT Systems Architect</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -29,9 +29,24 @@
     </header>
 
     <main class="container" id="soluciones">
-        <h2 class="section-title">Ecosistema Cayver (Demostraciones Interactivas)</h2>
         
         <div class="bento-grid">
+
+            <div class="bento-card card-large profile-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-user-tie text-brown"></i> Perfil Profesional</h3>
+                    <div class="tags">
+                        <span class="tag tag-blue">Licenciado en Sistemas</span>
+                        <span class="tag tag-green">Full Stack Dev</span>
+                    </div>
+                </div>
+                <p class="demo-desc" style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.7; margin-bottom: 0;">
+                    Soy <strong>Licenciado en Sistemas Computacionales</strong> y actualmente me desempeño como responsable del departamento TI en <strong>Sitmobel</strong>. Mi experiencia combina el soporte técnico crítico e infraestructura (Servidores, Redes, CCTV) con el desarrollo <strong>Full Stack (PHP, C++, Python, SQL)</strong>.<br><br>
+                    Me especializo en la administración de ERPs industriales y en la integración de <strong>Inteligencia Artificial (Gemini, Copilot)</strong> para automatizar, modernizar y escalar procesos operativos a medida.
+                </p>
+            </div>
+
+            <h2 class="section-title" style="grid-column: 1 / -1; margin-top: 20px;">Ecosistema Cayver (Demos)</h2>
             
             <div class="bento-card card-large">
                 <div class="card-header">
@@ -47,33 +62,37 @@
                 <div class="demo-panel">
                     <div class="dashboard-split">
                         <div class="panel-left">
-                            <table class="pro-table">
-                                <thead>
-                                    <tr>
-                                        <th>Centro de Trabajo</th>
-                                        <th style="text-align: center;">Tiempo (Min)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>🏢 PINTURA<br><small style="color: #8c7b70;">👤 Juan Pérez (120 min) / 👤 Luis Gómez (80 min)</small></td>
-                                        <td style="text-align: center; font-weight: 800; color: #5a4a42;">200 min</td>
-                                    </tr>
-                                    <tr>
-                                        <td>🏢 SOLDADURA<br><small style="color: #8c7b70;">👤 Carlos Ruiz (150 min)</small></td>
-                                        <td style="text-align: center; font-weight: 800; color: #5a4a42;">150 min</td>
-                                    </tr>
-                                    <tr style="background: #fdfbf7;">
-                                        <td style="text-align: right; font-weight: 900;">TIEMPO TOTAL:</td>
-                                        <td style="text-align: center; font-weight: 900; color: #b45309;">350 min</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="pro-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Centro de Trabajo</th>
+                                            <th style="text-align: center;">Tiempo (Min)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>🏢 PINTURA<br><small style="color: #8c7b70;">👤 Juan Pérez (120 min) / 👤 Luis Gómez (80 min)</small></td>
+                                            <td style="text-align: center; font-weight: 800; color: #5a4a42;">200</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🏢 SOLDADURA<br><small style="color: #8c7b70;">👤 Carlos Ruiz (150 min)</small></td>
+                                            <td style="text-align: center; font-weight: 800; color: #5a4a42;">150</td>
+                                        </tr>
+                                        <tr style="background: #fdfbf7;">
+                                            <td style="text-align: right; font-weight: 900;">TOTAL:</td>
+                                            <td style="text-align: center; font-weight: 900; color: #b45309;">350</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <button id="btn-graficar-tiempos" class="btn-action w-100 mt-3"><i class="fas fa-chart-pie"></i> Generar Gráfica de Tiempos</button>
                         </div>
                         <div class="panel-right" id="chart-wrapper">
                             <div class="empty-state" id="chart-placeholder">Presiona el botón para graficar</div>
-                            <canvas id="tiemposChart" style="display: none;"></canvas>
+                            <div class="chart-box" style="position: relative; width: 100%; height: 220px; display: none;" id="chart-container-box">
+                                <canvas id="tiemposChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +118,7 @@
                     </div>
 
                     <div class="ldm-content mt-3">
-                        <div id="ldm-table-container">
+                        <div id="ldm-table-container" class="table-responsive">
                             <table class="pro-table" id="tabla-ldm">
                                 <thead><tr><th>SEQ</th><th>Descripción</th><th style="text-align: center;">Cant</th></tr></thead>
                                 <tbody id="ldm-tbody">
