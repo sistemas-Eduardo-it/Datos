@@ -3,132 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Luis Eduardo Ramírez Rivas | IT Systems Architect</title>
+    <title>Luis Eduardo Ramírez Rivas | IT Manager & Systems Architect</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <span class="logo">LUIS EDUARDO RAMÍREZ</span>
+            <span class="logo"><i class="fas fa-layer-group"></i> LUIS EDUARDO RAMÍREZ</span>
             <div class="nav-links">
-                <a href="#soluciones">Portafolio Web</a>
-                <a href="Eduardo Ramirez CV.pdf" download class="btn-primary">Descargar CV <i class="fas fa-file-pdf"></i></a>
+                <a href="#experiencia">Dashboard</a>
+                <a href="Eduardo Ramirez CV.pdf" target="_blank" class="btn-primary">Descargar CV <i class="fas fa-arrow-down"></i></a>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero reveal">
         <div class="hero-content">
-            <div class="tech-badge">Head of Systems @ Sitmobel</div>
-            <h1 class="title-main">Arquitectura de Software e Infraestructura TI</h1>
-            <p class="hero-desc">Desarrollo de soluciones Full Stack (PHP, SQL, Python, C++) enfocadas en la optimización de procesos operativos, control de LDM y monitoreo de producción.</p>
+            <div class="tech-badge"><span class="pulse-dot"></span> IT Manager @ Sitmobel</div>
+            <h1 class="title-main">Arquitecto de Soluciones TI & <br><span class="text-gradient">Automatización con IA</span></h1>
+            <p class="hero-desc">Dirección de infraestructura tecnológica y desarrollo Full Stack (PHP, C++, Python). Especialista en administración de ERPs industriales e integración de modelos de Inteligencia Artificial para la optimización de procesos operativos.</p>
         </div>
     </header>
 
-    <main class="container" id="soluciones">
-        
+    <main class="container" id="experiencia">
         <div class="bento-grid">
 
-            <div class="bento-card card-large profile-card">
+            <div class="bento-card card-large profile-card reveal">
                 <div class="card-header">
-                    <h3><i class="fas fa-user-tie text-brown"></i> Perfil Profesional</h3>
+                    <h3><i class="fas fa-microchip text-accent"></i> Core Tecnológico</h3>
                     <div class="tags">
-                        <span class="tag tag-blue">Licenciado en Sistemas</span>
-                        <span class="tag tag-green">Full Stack Dev</span>
+                        <span class="tag tag-slate">Infraestructura & Redes</span>
+                        <span class="tag tag-teal">ERP Management</span>
+                        <span class="tag tag-blue">Full Stack Dev</span>
                     </div>
                 </div>
-                <p class="demo-desc" style="color: var(--text-dark); font-size: 1.05rem; line-height: 1.7; margin-bottom: 0;">
-                    Soy <strong>Licenciado en Sistemas Computacionales</strong> y actualmente me desempeño como responsable del departamento TI en <strong>Sitmobel</strong>. Mi experiencia combina el soporte técnico crítico e infraestructura (Servidores, Redes, CCTV) con el desarrollo <strong>Full Stack (PHP, C++, Python, SQL)</strong>.<br><br>
-                    Me especializo en la administración de ERPs industriales y en la integración de <strong>Inteligencia Artificial (Gemini, Copilot)</strong> para automatizar, modernizar y escalar procesos operativos a medida.
-                </p>
-            </div>
-
-            <h2 class="section-title" style="grid-column: 1 / -1; margin-top: 20px;">Ecosistema Cayver (Demos)</h2>
-            
-            <div class="bento-card card-large">
-                <div class="card-header">
-                    <h3><i class="fas fa-chart-pie text-brown"></i> Monitor de Producción y Tiempos</h3>
-                    <div class="tags">
-                        <span class="tag tag-blue">PHP</span>
-                        <span class="tag tag-orange">SQL</span>
-                        <span class="tag tag-green">Chart.js</span>
-                    </div>
-                </div>
-                <p class="demo-desc">Agrupación de tiempos por Centro de Trabajo y generación de gráficas gerenciales.</p>
-                
-                <div class="demo-panel">
-                    <div class="dashboard-split">
-                        <div class="panel-left">
-                            <div class="table-responsive">
-                                <table class="pro-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Centro de Trabajo</th>
-                                            <th style="text-align: center;">Tiempo (Min)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>🏢 PINTURA<br><small style="color: #8c7b70;">👤 Juan Pérez (120 min) / 👤 Luis Gómez (80 min)</small></td>
-                                            <td style="text-align: center; font-weight: 800; color: #5a4a42;">200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>🏢 SOLDADURA<br><small style="color: #8c7b70;">👤 Carlos Ruiz (150 min)</small></td>
-                                            <td style="text-align: center; font-weight: 800; color: #5a4a42;">150</td>
-                                        </tr>
-                                        <tr style="background: #fdfbf7;">
-                                            <td style="text-align: right; font-weight: 900;">TOTAL:</td>
-                                            <td style="text-align: center; font-weight: 900; color: #b45309;">350</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <button id="btn-graficar-tiempos" class="btn-action w-100 mt-3"><i class="fas fa-chart-pie"></i> Generar Gráfica de Tiempos</button>
-                        </div>
-                        <div class="panel-right" id="chart-wrapper">
-                            <div class="empty-state" id="chart-placeholder">Presiona el botón para graficar</div>
-                            <div class="chart-box" style="position: relative; width: 100%; height: 220px; display: none;" id="chart-container-box">
-                                <canvas id="tiemposChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tech-stack-grid">
+                    <div class="tech-item"><i class="fab fa-php"></i> PHP / C++</div>
+                    <div class="tech-item"><i class="fas fa-database"></i> SQL / BD</div>
+                    <div class="tech-item"><i class="fas fa-robot"></i> Integración IA</div>
+                    <div class="tech-item"><i class="fas fa-server"></i> Servidores / VMware</div>
+                    <div class="tech-item"><i class="fas fa-shield-alt"></i> Ciberseguridad</div>
+                    <div class="tech-item"><i class="fas fa-industry"></i> Kepler / GSS ERP</div>
                 </div>
             </div>
 
-            <div class="bento-card card-large">
+            <div class="bento-card reveal card-ai">
                 <div class="card-header">
-                    <h3><i class="fas fa-sitemap text-brown"></i> RUTA-LDM (Listado de Materiales)</h3>
-                    <span class="tag tag-gray">Gestión de Procesos</span>
+                    <h3><i class="fas fa-brain text-accent"></i> Módulo IA Automatizada</h3>
                 </div>
-                <p class="demo-desc">Despiece interactivo multinivel: Semi terminados, Procesos y Materiales.</p>
+                <p class="demo-desc">Simulación de integración API (Gemini/Copilot) para análisis de datos ERP.</p>
+                
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="terminal-title">bash - IA_Agent_Module</span>
+                    </div>
+                    <div class="terminal-body" id="ai-terminal">
+                        <div class="term-line">> Conectando a Base de Datos ERP... <span class="text-green">[OK]</span></div>
+                        <div class="term-line">> Cargando modelo predictivo IA... <span class="text-green">[OK]</span></div>
+                        <div class="term-line user-input">> Analizar cuellos de botella en Producción LDM</div>
+                        <div class="term-line ai-response typing-effect" id="ai-typewriter"></div>
+                    </div>
+                    <button id="btn-run-ai" class="btn-action w-100 mt-3"><i class="fas fa-play"></i> Ejecutar Diagnóstico IA</button>
+                </div>
+            </div>
+
+            <div class="bento-card reveal">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-line text-accent"></i> Monitor de Producción</h3>
+                </div>
+                <p class="demo-desc">Extracción SQL y visualización gerencial de tiempos por Centro de Trabajo.</p>
                 
                 <div class="demo-panel">
+                    <div class="chart-wrapper" id="chart-wrapper">
+                        <div class="empty-state" id="chart-placeholder">
+                            <i class="fas fa-chart-pie fa-3x" style="color: var(--slate-300); margin-bottom: 10px;"></i><br>
+                            Esperando ejecución de consulta...
+                        </div>
+                        <div class="chart-box" id="chart-container-box" style="display: none;">
+                            <canvas id="tiemposChart"></canvas>
+                        </div>
+                    </div>
+                    <button id="btn-graficar-tiempos" class="btn-action btn-outline w-100 mt-3"><i class="fas fa-database"></i> Consultar Datos</button>
+                </div>
+            </div>
+
+            <div class="bento-card card-large reveal">
+                <div class="card-header">
+                    <h3><i class="fas fa-sitemap text-accent"></i> Dashboard LDM (Listado de Materiales)</h3>
+                    <span class="tag tag-slate"><i class="fas fa-cogs"></i> Control de Procesos</span>
+                </div>
+                <p class="demo-desc">Arquitectura de despiece interactivo multinivel: Semi-terminados, Procesos de Manufactura y Materiales.</p>
+                
+                <div class="demo-panel p-0">
                     <div class="pt-bar">
-                        <div style="font-weight: 900; font-size: 16px;">▶ 📁 PT-25-0001</div>
-                        <div style="font-weight: 800; color: #5a4a42;">SOMBRILLA MON 3 MTS</div>
+                        <div class="pt-title"><i class="fas fa-box-open"></i> PT-25-0001: <span class="text-dark">SOMBRILLA MON 3 MTS</span></div>
                     </div>
                     
-                    <div class="ldm-controls mt-3">
-                        <button class="btn-cat active" data-target="st">📦 Semi terminados (2)</button>
-                        <button class="btn-cat" data-target="proc">⚙️ Procesos (6)</button>
-                        <button class="btn-cat" data-target="mat">🔩 Materiales (4)</button>
+                    <div class="ldm-controls">
+                        <button class="btn-cat active" data-target="st"><i class="fas fa-cubes"></i> Semi terminados (2)</button>
+                        <button class="btn-cat" data-target="proc"><i class="fas fa-tools"></i> Procesos (6)</button>
+                        <button class="btn-cat" data-target="mat"><i class="fas fa-layer-group"></i> Materiales (4)</button>
                     </div>
 
-                    <div class="ldm-content mt-3">
+                    <div class="ldm-content">
                         <div id="ldm-table-container" class="table-responsive">
-                            <table class="pro-table" id="tabla-ldm">
-                                <thead><tr><th>SEQ</th><th>Descripción</th><th style="text-align: center;">Cant</th></tr></thead>
-                                <tbody id="ldm-tbody">
-                                    </tbody>
+                            <table class="saas-table" id="tabla-ldm">
+                                <thead><tr><th style="width: 80px;">SEQ</th><th>Descripción del Componente</th><th style="text-align: right;">Cant. Req.</th></tr></thead>
+                                <tbody id="ldm-tbody"></tbody>
                             </table>
                         </div>
 
                         <div id="ldm-scroll-container" style="display: none;">
-                            <div class="process-flow" id="ldm-scroll-content">
-                                </div>
+                            <div class="process-flow" id="ldm-scroll-content"></div>
                         </div>
                     </div>
                 </div>
